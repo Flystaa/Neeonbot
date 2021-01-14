@@ -18,7 +18,7 @@ client.on("ready", () =>{
     client.user.setActivity('!neon | 16.923 Servers', { type: 'LISTENING' });
  });
 
- client.login('Nzk4OTk0ODkxNjYwMzI4OTcx.X_9H-g.FkrNahvIhG5JUTb0g-bCBXfG3fQ');
+ client.login('');
 
  //------Nachichten-------
 
