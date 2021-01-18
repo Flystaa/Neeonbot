@@ -1,0 +1,37 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "async": "^3.2.0",
+    "axios": "^0.21.1",
+    "btoa": "^1.2.1",
+    "canvas": "^2.6.1",
+    "client-oauth2": "^4.3.3",
+    "ctx": "^0.3.0",
+    "discord-oauth2": "^2.6.0",
+    "discord-oauth2-api": "^1.0.5",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "events": "^3.2.0",
+    "express": "^4.17.1",
+    "express-generator": "^4.16.1",
+    "ffmpeg-static": "^4.2.7",
+    "fontconfig": "^0.2.1",
+    "guild": "^1.2.2",
+    "js-message": "^1.0.7",
+    "long": "^4.0.0",
+    "node-fetch": "^2.6.1",
+    "object-collection": "^1.0.31",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "ytdl-core": "^4.4.3"
+  }
+}
