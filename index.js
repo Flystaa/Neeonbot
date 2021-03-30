@@ -60,14 +60,14 @@ const dotenv = require('dotenv').config()
 // Request Modul für OAuth2
 const request = require('request');
 
-// DiscordJS trigger welcher "Ready" sagt sobald der Bot bereit ist
-// Dieses Event kommt nur einmal pro Start
+// Bot Sucessfull started
 client.once('ready', () => {
-	console.log('Ready!');
+	console.log(`Logged in as ${client.user.tag}!`);
 });
 
 // Sobald der Trigger "Ready" ausgibt wird "Status funktioniert boy" ausgegeben.
 // Dies bestätigt das der Bot die Aktivitäten "Watching" und "Listening" mit angegeben Daten ausgibt
+// eventuell hier ne async funktion die alle 15 sekunden den status ändert?
  client.on("ready", () => {
     client.user.setActivity(`!neeonhelp | ${client.guilds.cache.size} Servern`, { type: "STREAMING", url: "https://www.twitch.tv/selfmadeneeon" })
     client.user.setActivity(`!neeonhelp | ${client.guilds.cache.size} Servern`, { type: "WATCHING" })
@@ -95,11 +95,11 @@ client.on('guildMemberRemove', member => {
 client.on('message', message => {
 	if (message.content === '!ping') {
         // sendet Pong wenn !ping geschrieben wird
-        message.channel.send('Pong.');
+        message.channel.send(`Dauer der Antwort: ${sent.createdTimestamp - message.createdTimestamp}ms`);
     }
 });
 
-//------Nachichten--------------
+//------Nachrichten--------------
 
 client.on('message', message => {
 	if (message.content === '!moi') {
@@ -259,6 +259,7 @@ const neeonpartner = new Discord.MessageEmbed()
         { name: 'SelfMadeNeeon',  value: 'Streamer, Developer', inline: true },
         { name: 'SilentDeath', value: 'Streamer', inline: true },
         { name: 'Remoonko', value: 'Streamer', inline: true },
+	{ name: 'Lennart', value: '[Helper](https://github.com/l3nnartt)', inline: true },
     )
     .setTimestamp()
     .setFooter('Offizielle Neeon Partner', 'https://i.ibb.co/j3vbZ8p/Neeonv2-Discord-New.png');
@@ -312,11 +313,11 @@ const joinbeta = new Discord.MessageEmbed()
         { name: 'Welcome', value: 'Unterstützter Kanal', inline: true },
         { name: 'Willkommensraum', value: 'Semi Unterstützter Kanal', inline: true },
         { name: 'Eingang', value: 'Semi Unterstützter Kanal', inline: true },
-		{ name: '👋↣｜willkommen', value: 'In Entwicklung', inline: true },
-		{ name: '🔮portal', value: 'Semi Unterstützter Kanal', inline: true },
-		{ name: '🌌system-messages', value: 'Semi Unterstützter Kanal', inline: true },
-		{ name: 'system-messages', value: 'Unterstützter Kanal', inline: true },
-		{ name: 'system-nachrichten', value: 'Unterstützter Kanal', inline: true },
+	{ name: '👋↣｜willkommen', value: 'In Entwicklung', inline: true },
+	{ name: '🔮portal', value: 'Semi Unterstützter Kanal', inline: true },
+	{ name: '🌌system-messages', value: 'Semi Unterstützter Kanal', inline: true },
+	{ name: 'system-messages', value: 'Unterstützter Kanal', inline: true },
+	{ name: 'system-nachrichten', value: 'Unterstützter Kanal', inline: true },
     )
     .setTimestamp()
     .setFooter('Dieses Feature ist immernoch in Entwicklung', 'https://i.ibb.co/j3vbZ8p/Neeonv2-Discord-New.png');
@@ -326,25 +327,8 @@ const joinbeta = new Discord.MessageEmbed()
 
 
 //-------Help Command-------
-
-// Für gewöhnlich würde ich hier nun ein Emded reinmachen, 
-// Da ich dies aber gerade erstelle und Provisorisch einen Command brauche
-// Erstelel ich hier einen Text Befehl...
-// Eventuell lösche ich das später wieder, wir werden sehen
-// Change, 18.01.2021: Werde den Command doch noch einmal umarbeiten.
 client.on('message', message => {
-	if (message.content === '!help') {
-        message.channel.send('Ich helfe dir gerne! Nutze bitte !neeonhelp wenn du hilfe benötigst!');
-    }
-});
-
-
-// Ich sollte hier wohl anmerken das dies das Embed ist. Wie wir von oben schon wissen brauchen Emnbeds immer 2 Funktionen. 
-// Dieses hier ist ein wenig anderst als die anderen
-// In diesem Embed werden alle Commands wie eine Tabelle Sortiert.
-// Ehrlich wirklich was ummcoden ist das nun nicht
-client.on('message', message => {
-    if (message.content === '!neeonhelp') {
+    if (message.content === '!help') {
         message.channel.send(neeonhelp);
     }
 });
